@@ -1,0 +1,93 @@
+{
+  "swagger": "2.0",
+  "host": "us.api.concursolutions.com",
+  "basePath": "/detokenizer/v1",
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "consumes": [
+    "application/json",
+    "application/xml"
+  ],
+  "info": {
+    "title": "Detokenizer Service",
+    "description": "Detokenizer Service allows clients to retrieve user's credit card number from Concur Expense in a secure way.",
+    "version": "1.0"
+  },
+  "tags": [
+    {
+      "name": "Resources",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/company/{companyUUID}/creditcard/{creditcardGUID}": {
+      "get": {
+        "tags": [
+          "Resources"
+        ],
+        "summary": "Get credit card account details",
+        "description": "Gets the encrypted credit card account number",
+        "parameters": [
+          {
+            "name": "companyUUID",
+            "in": "path",
+            "description": "Company UUID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "creditcardGUID",
+            "in": "path",
+            "description": "Credit card GUID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pubkeyAlgorithm",
+            "in": "query",
+            "description": "RSA Algorithm used by PublicKey for card number encryption.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pubkeyFormat",
+            "in": "query",
+            "description": "Format used by Public key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pubkey",
+            "in": "query",
+            "description": "Public Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/CreditCardAccountDetails"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreditCardAccountDetails": {
+      "properties": {
+        "accountNumber ": {
+          "type": "string",
+          "description": "The encrypted credit card account number"
+        }
+      }
+    }
+  }
+}
