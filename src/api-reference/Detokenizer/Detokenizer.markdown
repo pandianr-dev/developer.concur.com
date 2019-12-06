@@ -5,7 +5,7 @@
 
 {% include prerelease.html %}
 
-Detokenizer Service allows clients to retrieve user's credit card number from Concur Expense in a secure way. Detokenizer service returns the card number encrypted with a public key that the client provides in the request. Client will be able to decrypt the card number using their private key.
+The Detokenizer Service allows clients to retrieve the user's credit card number from Concur Expense in a secure way. The Detokenizer service returns the user's credit card number encrypted with a public key that the client provides in the request. The client will be able to decrypt the user's credit card number using their private key.
 
 * [Products and Editions](#products-editions)
 * [Scope Usage](#scope-usage)
@@ -21,7 +21,7 @@ Detokenizer Service allows clients to retrieve user's credit card number from Co
 
 Name|Description|Endpoint
 ---|---|---
-`creditcardaccountnumber.read or creditcardaccount.read`|Reads credit card data from concur expense|/detokenizer/v1/company/{company}/creditcard/{creditcard} 
+`creditcardaccountnumber.read or creditcardaccount.read`|Reads credit card data from Concur Expense|/detokenizer/v1/company/{companyUUID}/creditcard/{creditcardGUID} 
 
 ## <a name="access-token-usage"></a>Access Token Usage
 
@@ -29,7 +29,7 @@ This API requires a Company level JWT token
 
 ## <a name="get-credit-card-account-details"></a>Get credit card account details
 
-Returns the credit card number encrypted with the public key provided in the request
+Returns the credit card number encrypted with the public key provided in the request.
 
 ### Scopes
 
@@ -45,11 +45,11 @@ GET https://{region}.api.concursolutions.com/detokenizer/v1/company/{companyUUID
 
 Name|Type|Format|Description
 ---|---|---|---
-`pubkeyAlgorithm `|`string`|query|RSA Algorithm used by PublicKey for card number encryption
-`pubkeyFormat  `|`string`|query |Format used by Publickey
+`pubkeyAlgorithm `|`string`|query|The RSA Algorithm used by the PublicKey for credit card number encryption.
+`pubkeyFormat  `|`string`|query |Public key format
 `pubkey  `|`string`|query|Public key
-`company  `|`string`|path |Company UUID
-`creditcard  `|`string`|path |Credit card GUID
+`companyUUID  `|`string`|path |Company UUID
+`creditcardGUID  `|`string`|path |Credit card GUID
 
 #### Headers
 
@@ -105,4 +105,3 @@ Content-Length: 1270
   "accountNumber": "MIAGCSqGSIb3DQEHA6CAMIACAQAxgbUwgbICAQAwGzAPMQ0wCwYDVQQDDARUZXN0AghyaD1Uj9uSsDANBgkqhkiG9w0BAQEFAASBgAk0/9Yd5CQt5/6vQ1gO9aSivBJrv4AOAluZ876tqVI+fCZi7P1YojC4nTkvl358zfD3vXE3ehj14FfIPZlwmuVlSZF4ad5ni2B78fs5Jr6lxhG9iPU0FyFv+NhuIet/mpEaaX2CWB8CUwkTVdDyT5UjrwqsvYpRCwLz0Hx76BO8MIAGCSqGSIb3DQEHATAdBglghkgBZQMEAQIEEPo3PO3VplgQ4mN0L5KInPKggAQgkqu7zWslGq3uqw0G2WXkK0QA2p0YHQuwhEPT2JMF5mUAAAAAAAAAA"
 }
 ```
-

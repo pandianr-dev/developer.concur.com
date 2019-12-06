@@ -15,7 +15,7 @@
   ],
   "info": {
     "title": "Detokenizer Service",
-    "description": "Detokenizer Service allows clients to retrieve user's credit card number from Concur Expense in a secure way.",
+    "description": "The Detokenizer Service allows clients to retrieve the user's credit card number from Concur Expense in a secure way. The Detokenizer service returns the user's credit card number encrypted with a public key that the client provides in the request. The client will be able to decrypt the user's credit card number using their private key.",
     "version": "1.0"
   },
   "tags": [
@@ -31,7 +31,7 @@
           "Resources"
         ],
         "summary": "Get credit card account details",
-        "description": "Gets the encrypted credit card account number",
+        "description": "Returns the credit card number encrypted with the public key provided in the request.",
         "parameters": [
           {
             "name": "companyUUID",
@@ -50,14 +50,14 @@
           {
             "name": "pubkeyAlgorithm",
             "in": "query",
-            "description": "RSA Algorithm used by PublicKey for card number encryption.",
+            "description": "The RSA Algorithm used by the PublicKey for credit card number encryption.",
             "required": true,
             "type": "string"
           },
           {
             "name": "pubkeyFormat",
             "in": "query",
-            "description": "Format used by Public key",
+            "description": "Public key format",
             "required": true,
             "type": "string"
           },
